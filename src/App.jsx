@@ -1,22 +1,15 @@
-import { useEffect, useState } from 'react'
-import './App.css'
+import { HashRouter, Route, Routes } from "react-router-dom";
+import Home from "./Home";
+import Item from "./Item";
 
-function App() {
-  const [message, setMessage] = useState('...Loading...')
-
-  async function fetchData() {
-    const result = await fetch('http://localhost:3000/api/hello')
-    const data = await result.json()
-    setMessage(data.message)
-  }
-
-  useEffect(() => {
-    fetchData()
-  }, [])
-
+export default function App() {
   return (
-    <div>Message: {message}</div>
-  )
+    <HashRouter>
+      <Routes>
+        <Route path="/" element={<Home />}>
+          <Route path="item" element={<Item />} />
+        </Route>
+      </Routes>
+    </HashRouter>
+  );
 }
-
-export default App

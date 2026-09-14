@@ -35,6 +35,16 @@ export default function Home() {
           >
             Item
           </Button>
+          {user?.username === "admin" && (
+            <Button
+              color="inherit"
+              onClick={() => {
+                navigate("/user");
+              }}
+            >
+              User
+            </Button>
+          )}
           <Button
             color="inherit"
             onClick={async () => {
